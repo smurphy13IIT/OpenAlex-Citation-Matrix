@@ -60,6 +60,7 @@ def cited_by_per_decade(base_url, endpoint, pub_year, source_id, journal_counts,
                     article_source = k['primary_location']['source']['id']
 
                     if article_source in journal_titles:
+                        print("Citation " + str(artice_source) + " matched to journal, adding to list")
                         journal = journal_titles[article_source]
                         journal_counts[journal] += 1
 
@@ -90,12 +91,13 @@ def references_per_decade(base_url, endpoint, pub_year, source_id, journal_count
 
         for i in all_articles:
             for j in i['referenced_works']:
-                references.append(j)
+                j_api = j[:8] + 'api.' + j[8:]
+                references.append(j_api)
 
         print(str(len(references)) + " total articles referenced in this time frame")
 
-        for j in references:
-            ref_response = requests.get(j)
+        for k in references:
+            ref_response = requests.get(k)
 
             if ref_response.status_code == 200:
 
@@ -105,6 +107,7 @@ def references_per_decade(base_url, endpoint, pub_year, source_id, journal_count
                     reference_source = reference_data['primary_location']['source']['id']
 
                     if reference_source in journal_titles:
+                        print("Reference " + str(reference_source) + " matched to journal, adding to list")
                         journal = journal_titles[reference_source]
                         journal_counts[journal] += 1
 
