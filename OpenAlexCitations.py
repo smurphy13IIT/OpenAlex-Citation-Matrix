@@ -27,6 +27,8 @@ for i in journals_master:
         references_per_decade = references_per_decade(base_url, endpoint, value, source, journal_counts, journal_titles)
         i['references'][key] = references_per_decade
 
+        print(journals_master)
+
 print(journals_master)
 
 file_path = "master_citation_data.json"
