@@ -1,0 +1,61 @@
+For Industrial Marketing Management:
+
+Eighties: {'https://openalex.org/S142990027': 71, 'https://openalex.org/S119950638': 19, 'https://openalex.org/S145429826': 1, 'https://openalex.org/S163534328': 3, 'https://openalex.org/S163545350': 0, 'https://openalex.org/S92522684': 43, 'https://openalex.org/S11810700': 30, 'https://openalex.org/S102896891': 0, 'https://openalex.org/S89389284': 52, 'https://openalex.org/S159120381': 0, 'https://openalex.org/S31748134': 312}
+
+Nineties: {'https://openalex.org/S142990027': 85, 'https://openalex.org/S119950638': 22, 'https://openalex.org/S145429826': 1, 'https://openalex.org/S163534328': 7, 'https://openalex.org/S163545350': 0, 'https://openalex.org/S92522684': 66, 'https://openalex.org/S11810700': 41, 'https://openalex.org/S102896891': 3, 'https://openalex.org/S89389284': 101, 'https://openalex.org/S159120381': 3, 'https://openalex.org/S31748134': 662}
+
+2000s: {'https://openalex.org/S142990027': 124, 'https://openalex.org/S119950638': 25, 'https://openalex.org/S145429826': 1, 'https://openalex.org/S163534328': 12, 'https://openalex.org/S163545350': 0, 'https://openalex.org/S92522684': 133, 'https://openalex.org/S11810700': 65, 'https://openalex.org/S102896891': 17, 'https://openalex.org/S89389284': 275, 'https://openalex.org/S159120381': 21, 'https://openalex.org/S31748134': 2494}
+
+2010's: {'https://openalex.org/S142990027': 187, 'https://openalex.org/S119950638': 33, 'https://openalex.org/S145429826': 5, 'https://openalex.org/S163534328': 12, 'https://openalex.org/S163545350': 0, 'https://openalex.org/S92522684': 312, 'https://openalex.org/S11810700': 87, 'https://openalex.org/S102896891': 128, 'https://openalex.org/S89389284': 498, 'https://openalex.org/S159120381': 30, 'https://openalex.org/S31748134': 12097}
+
+
+
+Number of times, per decade, that articles in Industrial Marketing Management were cited by the following journals:
+
+Eighties: {'Journal of Marketing': 71,
+	'Journal of Marketing Research': 19,
+	'Journal of Consumer Research': 1,
+	'Marketing Science': 3,
+	'Journal of Consumer Psychology': 0,
+	'Journal of the Academy of Marketing Science': 43,
+	'International Journal of Research in Marketing': 30,
+	'Psychology and Marketing': 0,
+	'European Journal of Marketing': 52,
+	'Journal of Retailing': 0,
+	'Industrial Marketing Management': 312}
+	
+Nineties: {'Journal of Marketing': 85,
+	'Journal of Marketing Research': 22,
+	'Journal of Consumer Research': 1,
+	'Marketing Science': 7,
+	'Journal of Consumer Psychology': 0,
+	'Journal of the Academy of Marketing Science': 66,
+	'International Journal of Research in Marketing': 41,
+	'Psychology and Marketing': 3,
+	'European Journal of Marketing': 101,
+	'Journal of Retailing': 3,
+	'Industrial Marketing Management': 662}
+	
+2000s: {'Journal of Marketing': 124,
+	'Journal of Marketing Research': 25,
+	'Journal of Consumer Research': 1,
+	'Marketing Science': 12,
+	'Journal of Consumer Psychology': 0,
+	'Journal of the Academy of Marketing Science': 133,
+	'International Journal of Research in Marketing': 65,
+	'Psychology and Marketing': 17,
+	'European Journal of Marketing': 275,
+	'Journal of Retailing': 21,
+	'Industrial Marketing Management': 2494}
+	
+2010s: {'Journal of Marketing': 187,
+	'Journal of Marketing Research': 33,
+	'Journal of Consumer Research': 5,
+	'Marketing Science': 12,
+	'Journal of Consumer Psychology': 0,
+	'Journal of the Academy of Marketing Science': 312,
+	'International Journal of Research in Marketing': 87,
+	'Psychology and Marketing': 128,
+	'European Journal of Marketing': 498,
+	'Journal of Retailing': 30,
+	'Industrial Marketing Management': 12097}
