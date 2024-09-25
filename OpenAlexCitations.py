@@ -18,7 +18,6 @@ cited_by_dict = {}
 # Collect "cited by" data - the number of journals that have cited one of a list of journals in a given timeframe
 for i in journals_master:
     source = i['oaid']
-    decades_dict = {}
 
     for key, value in pub_year_ranges.items():
         print("Gathering citation data for the " + str(key))
