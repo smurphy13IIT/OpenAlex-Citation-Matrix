@@ -347,13 +347,3 @@ journals_master = [{"title" : "Journal of Marketing",
                     }
                    ]
 
-# Loop to replace OAIDs in citation count dictionaries with titles
-# for i in journals_master:
-#     for key in i['cited_by']['Eighties']:
-#         for j in journals_master:
-#             if j["oaid"] == key:
-#                 i['cited_by']['Eighties'][j["title"]] = i['cited_by']['Eighties'].pop(key)
-#
-# print(journals_master)
-
-
