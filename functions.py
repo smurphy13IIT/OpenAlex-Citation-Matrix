@@ -49,21 +49,27 @@ def cited_by_per_decade(base_url, endpoint, pub_year, source_id, journal_counts,
         for i in all_articles:
             cited_by.append(i['cited_by_api_url'])
 
+        all_cited_by = []
+
+        citation_counter = 0
+
         for j in cited_by:
+            all_cited_by.extend(fetch_all_articles(j + ",publication_year:" + pub_year + "&per_page=100&mailto=smurphy13@iit.edu"))
+            citation_counter += len(all_cited_by)
+            if citation_counter % 50 == 0:
+                print("Added " + str(citation_counter) + " citations to the master citations list...")
 
-            all_cited_by = fetch_all_articles(j + ",publication_year:" + pub_year + "&per_page=100&mailto=smurphy13@iit.edu")
-
-        print(str(len(all_cited_by)) + " articles cited this one in this time frame")
+        print(str(len(all_cited_by)) + " articles cited this journal in this time frame\n"
+                                       "Searching for citations from journals in the list.")
 
         for k in all_cited_by:
             try:
                 article_source = k['primary_location']['source']['id']
 
                 if article_source in journal_titles:
-                    print("Citation " + str(artice_source) + " matched to journal, adding to list")
+                    print("Citation " + str(article_source) + " matched to journal, adding to list")
                     journal = journal_titles[article_source]
                     journal_counts[journal] += 1
-
 
             except:
                 pass
@@ -85,7 +91,8 @@ def references_per_decade(base_url, endpoint, pub_year, source_id, journal_count
     if response.status_code == 200:
         all_articles = fetch_all_articles(works_url)
 
-        print(str(len(all_articles)) + " total articles published in this time frame")
+        print(str(len(all_articles)) + " total articles published in this time frame.\n"
+                                       "Searching for references in the journals list.")
 
         references = []
 
@@ -95,6 +102,8 @@ def references_per_decade(base_url, endpoint, pub_year, source_id, journal_count
                 references.append(j_api)
 
         print(str(len(references)) + " total articles referenced in this time frame")
+
+        reference_count = 0
 
         for k in references:
             ref_response = requests.get(k)
@@ -107,9 +116,11 @@ def references_per_decade(base_url, endpoint, pub_year, source_id, journal_count
                     reference_source = reference_data['primary_location']['source']['id']
 
                     if reference_source in journal_titles:
-                        print("Reference " + str(reference_source) + " matched to journal, adding to list")
                         journal = journal_titles[reference_source]
+                        reference_count += 1
                         journal_counts[journal] += 1
+                        if reference_count % 10 == 0:
+                            print("Added " + str(reference_count) + " references to the master citations list...")
 
                 except:
                     pass

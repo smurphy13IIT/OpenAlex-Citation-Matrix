@@ -1,0 +1,41 @@
+{
+    "title": "Journal of Marketing Research",
+    "oaid": "https://openalex.org/S119950638",
+    "issn": "1547-7193",
+    "cited_by": {
+        "Thirties": {},
+        "Forties": {},
+        "Fifties": {},
+        "Sixties": {},
+        "Seventies": {},
+        "Eighties": {
+            "Journal of Marketing": 1418,
+            "Journal of Marketing Research": 1393,
+            "Journal of Consumer Research": 517,
+            "Marketing Science": 332,
+            "Journal of Consumer Psychology": 0,
+            "Journal of the Academy of Marketing Science": 781,
+            "International Journal of Research in Marketing": 486,
+            "Psychology and Marketing": 234,
+            "European Journal of Marketing": 230,
+            "Journal of Retailing": 1,
+            "Industrial Marketing Management": 332
+        },
+        "Nineties": {},
+        "Aughts": {},
+        "Teens": {},
+        "Twenties": {}
+    },
+    "references": {
+        "Thirties": {},
+        "Forties": {},
+        "Fifties": {},
+        "Sixties": {},
+        "Seventies": {},
+        "Eighties": {},
+        "Nineties": {},
+        "Aughts": {},
+        "Teens": {},
+        "Twenties": {}
+    }
+}
