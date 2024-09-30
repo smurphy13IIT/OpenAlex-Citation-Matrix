@@ -40,7 +40,7 @@ for i in journals_master:
         else:
             print(f"Error: {response.status_code}")
 
-    journal_path = i['title']
+    journal_path = str(i['title']) + ".json"
 
     with open(journal_path, 'w') as journal_file:
         json.dump(i, journal_file, indent=4)
