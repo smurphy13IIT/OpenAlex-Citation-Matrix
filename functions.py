@@ -5,6 +5,38 @@ import math
 ## This function accepts an OpenAlex API url that should return a JSON of article data.
 ## The OpenAlex API can return a maximum of 100 results per call.
 ## It uses the pagination field to make several API calls and combine the results into a list object.
+
+def fetch_all_articles_cursor(url):
+    page_num = 1
+    all_results = []
+    response = requests.get(url + "&cursor=*")
+
+    if response.status_code == 200:
+        data = response.json()
+        all_results.extend(data['results'])  # Add current page's results to list
+        cursor = data['meta']['next_cursor']
+        print(data['meta']['count'])
+
+        while cursor != None:
+            # Perform the GET request
+            loop_response = requests.get(url + "&cursor=" + cursor)
+
+            # Check if the request was successful
+            if loop_response.status_code == 200:
+                loop_data = loop_response.json()
+                all_results.extend(loop_data['results'])  # Add current page's results to list
+                page_num += 1
+                # Save the new cursor for the next call
+                cursor = loop_data['meta']['next_cursor']
+                print("Retrieving page " + str(page_num) + " of results")
+
+            else:
+                print(f"Error: {response.status_code}")
+
+                break
+
+    return all_results
+
 def fetch_all_articles(url):
     page_num = 1
     all_results = []
