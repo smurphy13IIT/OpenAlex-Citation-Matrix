@@ -29,6 +29,6 @@ complete_data['references'] = references_list
 journal_path = "complete_jom_citations.json"
 
 with open(journal_path, 'w') as journal_file:
-    json.dump(i, journal_file, indent=4)
+    json.dump(complete_data, journal_file, indent=4)
 
 
