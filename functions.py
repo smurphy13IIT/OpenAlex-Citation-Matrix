@@ -1,6 +1,6 @@
 import requests
 import math
-
+import pandas as pd
 
 ## This function accepts an OpenAlex API url that should return a JSON of article data.
 ## The OpenAlex API can return a maximum of 100 results per call.
@@ -112,7 +112,7 @@ def cited_by_per_decade(all_articles, pub_year, journal_counts, journal_titles):
 
     print(f"Added {cited_journal_count} citations to the master citations list")
 
-    return journal_counts
+    return all_cited_by, journal_counts
 
 ## This function takes a list of articles as its first parameter, as well as a publication year or range of years
 ## and two dictionaries containing journal data. It searches the list of articles for references and supplies a count
@@ -162,3 +162,29 @@ def references_per_decade(all_articles, pub_year, journal_counts, journal_titles
     print(f"{reference_count} total references identified for articles in these journals.")
 
     return journal_counts
+
+## Function to convert a JSON file that is structured as a list of regular dictionary objects to a CSV file where the
+## dictionary keys become the columns
+def json_to_csv(json_data, csv_filename):
+    data = []
+    columns = []
+    for key, value in json_data[0].items():
+        columns.append(key)
+
+    data.append(columns)
+
+    for i in json_data:
+        item_data = []
+
+        for key, value in i.items():
+            item_data.append(value)
+
+        data.append(item_data)
+
+    # Create a DataFrame
+    df = pd.DataFrame(data[1:], columns=data[0])
+
+    # Write the DataFrame to a CSV file
+    df.to_csv(f"{csv_filename}.csv", index=False)
+
+    print(f"CSV file {csv_filename}.csv created successfully!")
