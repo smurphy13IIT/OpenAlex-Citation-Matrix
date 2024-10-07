@@ -93,7 +93,13 @@ for i in journals_master:
             for k in all_cited_by:
                 cited_by_item_data = cited_by_data_template.copy()
                 cited_by_item_data['cites_article_in'] = i['title']
-                cited_by_item_data['source_journal'] = k['primary_location']['source']['display_name']
+                try:
+                    cited_by_item_data['source_journal'] = k['primary_location']['source']['display_name']
+
+                except:
+
+                    cited_by_item_data['source_journal'] = "None"
+                    
                 cited_by_item_data['work_title'] = k['title']
                 cited_by_item_data['work_oaid'] = k['ids']['openalex']
 
