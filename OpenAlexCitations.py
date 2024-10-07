@@ -11,6 +11,7 @@ base_url = "https://api.openalex.org/"
 # Set the endpoint for a specific entity (e.g., works, authors, concepts, venues, institutions)
 # This example fetches works by a specific author ID
 endpoint = "works"
+type_limiter = ',type:article'
 
 cited_by_dict = {}
 
@@ -18,9 +19,8 @@ cited_by_dict = {}
 for i in journals_master:
     source = i['oaid']
     print("Gathering Citation Matrix data for " + i['title'] + "\n")
-
     for key, value in pub_year_ranges.items():
-        works_url = f"{base_url}{endpoint}?filter=publication_year:{value},primary_location.source.id:{source}&per_page=100&mailto=smurphy13@iit.edu"
+        works_url = f"{base_url}{endpoint}?filter=publication_year:{value},primary_location.source.id:{source}{type_limiter}&per_page=100&mailto=smurphy13@iit.edu"
         response = requests.get(works_url)
 
         if response.status_code == 200:
@@ -76,7 +76,7 @@ for i in journals_master:
             ## Gather citation and reference counts for each journal
             print(f"Gathering citation data for {i["title"]} during the {key}")
             citation_counts = journal_counts.copy()
-            all_cited_by, cited_per_decade = cited_by_per_decade(all_articles, value, citation_counts, journal_titles)
+            all_cited_by, cited_per_decade = cited_by_per_decade(all_articles, value, type_limiter, citation_counts, journal_titles)
             i['cited_by'][key] = cited_per_decade
 
             all_cited_by_list = []
@@ -122,10 +122,10 @@ for i in journals_master:
 
             json_to_csv(all_cited_by_list, citing_csv_filename)
 
-            print(f"Gathering reference data for {i["title"]} during the {key}")
-            reference_counts = journal_counts.copy()
-            references_list = references_per_decade(all_articles, value, reference_counts, journal_titles)
-            i['references'][key] = references_list
+            # print(f"Gathering reference data for {i["title"]} during the {key}")
+            # reference_counts = journal_counts.copy()
+            # references_list = references_per_decade(all_articles, value, type_limiter, reference_counts, journal_titles)
+            # i['references'][key] = references_list
 
         else:
             print(f"Error: {response.status_code}")
