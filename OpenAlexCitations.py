@@ -93,18 +93,18 @@ for i in journals_master:
             for k in all_cited_by:
                 cited_by_item_data = cited_by_data_template.copy()
                 cited_by_item_data['cites_article_in'] = i['title']
-                cited_by_item_data['source_journal'] = j['primary_location']['source']['display_name']
-                cited_by_item_data['work_title'] = j['title']
-                cited_by_item_data['work_oaid'] = j['ids']['openalex']
+                cited_by_item_data['source_journal'] = k['primary_location']['source']['display_name']
+                cited_by_item_data['work_title'] = k['title']
+                cited_by_item_data['work_oaid'] = k['ids']['openalex']
 
                 try:
-                    cited_by_item_data['DOI'] = j['ids']['doi']
+                    cited_by_item_data['DOI'] = k['ids']['doi']
 
                 except:
                     cited_by_item_data['DOI'] = "None"
 
-                cited_by_item_data['pub_year'] = j['publication_year']
-                cited_by_item_data['work_type'] = j['type']
+                cited_by_item_data['pub_year'] = k['publication_year']
+                cited_by_item_data['work_type'] = k['type']
                 all_cited_by_list.append(cited_by_item_data)
 
             citing_csv_filename = f"{i['title']}-{key}-citing_articles-articles_only"
