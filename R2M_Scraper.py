@@ -4,6 +4,7 @@ import time
 import base64
 from functions import json_to_csv
 import os
+import pandas as pd
 
 root_dir = "C:/Users/smurphy13/PycharmProjects/Marketing Citation Matrix/R2M Data"
 jom_dir = root_dir + "/Articles"
@@ -14,6 +15,8 @@ paths = os.walk(jom_dir)
 articles = []
 
 csv_filename = root_dir + "/R2M_data"
+
+df = pd.DataFrame()
 
 """Set up the browser driver."""
 service = Service()
@@ -51,7 +54,6 @@ for decade in os.listdir(jom_dir):
                     pdf_path = article_path
 
                     driver.get('https://www.r2mindex.com/score.html')
-                    time.sleep(1)
 
                     input_pub_year = driver.find_element("xpath", '/html/body/div[2]/div/form/div[1]/input')
                     input_article_pdf = driver.find_element("xpath", '/html/body/div[2]/div/form/div[2]/span/input')
@@ -61,11 +63,11 @@ for decade in os.listdir(jom_dir):
 
                     btn_submit = driver.find_element("xpath", '/html/body/div[2]/div/form/div[3]/button')
                     btn_submit.click()
-                    time.sleep(1)
+                    time.sleep(3)
 
                     btn_show_full_results = driver.find_element("xpath", '/html/body/div[2]/div/div/div[1]/div[1]/button')
                     btn_show_full_results.click()
-                    time.sleep(.5)
+                    time.sleep(.2)
 
                     r2m_score_element = driver.find_element("xpath", '/html/body/div[2]/div/div/div[1]/div[1]/h1[2]')
                     r2m_score = r2m_score_element.text
@@ -86,9 +88,11 @@ for decade in os.listdir(jom_dir):
 
                     articles.append(article_data)
 
-                    print(article_data)
+                    temp_df = pd.DataFrame([article_data])
+                    df = pd.concat([df, temp_df], ignore_index=True)
+                    df.to_csv(csv_filename + ".csv", index=False, mode='w')
 
-                    time.sleep(1)
+                    print(article_data)
 
 driver.quit()
 
