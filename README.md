@@ -10,7 +10,7 @@
 
 These scripts use the [OpenAlex API](https://docs.openalex.org/) to retrieve article data. As written, it retrieves data from a discrete list of Marketing journals; this list can be found in the dictionaries.py file.
 
-The script will retrieve articles within a specific timeframe, which can also be adjusted by adjusting the "timeframe" dictionary. Comment out any year ranges that are not needed.
+The script will retrieve articles within a specific timeframe, which can also be adjusted by editing the "timeframe" dictionary. Comment out any year ranges that are not needed.
 
 The first loop retrieves lists of all articles published in each journal during the given timeframe, storing the data in a CSV file for each journal.
 
